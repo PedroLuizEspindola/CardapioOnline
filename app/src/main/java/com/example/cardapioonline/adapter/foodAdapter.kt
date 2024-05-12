@@ -28,7 +28,6 @@ class FoodAdapter (private val context: Context, private val foodList: MutableLi
         holder.txtFoodName.text = foodList[position].foodName
         holder.txtFoodDescription.text = foodList[position].foodDescription
         holder.foodPrice.text = foodList[position].price
-
     }
 
     inner class FoodViewHolder(binding: FoodItemBinding): RecyclerView.ViewHolder(binding.root) {
