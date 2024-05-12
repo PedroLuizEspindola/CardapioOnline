@@ -1,15 +1,11 @@
 package com.example.cardapioonline
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardapioonline.adapter.FoodAdapter
 import com.example.cardapioonline.databinding.ActivityMainBinding
-import com.example.cardapioonline.databinding.FoodItemBinding
 import com.example.cardapioonline.model.Food
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +23,30 @@ class MainActivity : AppCompatActivity() {
         recyclerViewFood.setHasFixedSize(true)
         foodAdapter = FoodAdapter(this,foodList)
         recyclerViewFood.adapter = foodAdapter
-        getFood()
 
+        binding.btnAddCart.setOnClickListener {
+            var valor1:Float
+            var valor2:Float
+            var valorFinal:Float
+            if (binding.textViewValor.text == null){
+                binding.textViewValor.text = binding.txtPrice.text
+            }else{
+                valor1 = binding.textViewValor.text.toString().toFloat()
+                valor2 = binding.txtPrice.text.toString().toFloat()
+                valorFinal = valor1 + valor2
+
+                binding.textViewValor.text = valorFinal.toString()
+            }
         }
+
+        binding.btnVerificar.setOnClickListener {
+            val intentForm = Intent(this,FinalizarActivity::class.java)
+            startActivity(intentForm)
+        }
+
+        getFood()
+        }
+
 
         private fun getFood(){
             val food1 = Food(
@@ -45,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 imgFood = R.drawable.food2,
                 foodName = "food 2",
                 foodDescription = "descricao aleatoria",
-                price = "50.00"
+                price = "60.00"
 
             )
             foodList.add(food2)
@@ -54,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 imgFood = R.drawable.food3,
                 foodName = "food 3",
                 foodDescription = "descricao aleatoria",
-                price = "50.00"
+                price = "70.00"
 
             )
             foodList.add(food3)
@@ -63,10 +80,11 @@ class MainActivity : AppCompatActivity() {
                 imgFood = R.drawable.food4,
                 foodName = "food 4",
                 foodDescription = "descricao aleatoria",
-                price = "50.00"
+                price = "80.00"
 
             )
             foodList.add(food4)
 
         }
+
     }

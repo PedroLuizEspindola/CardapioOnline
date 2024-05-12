@@ -36,5 +36,6 @@ class FoodAdapter (private val context: Context, private val foodList: MutableLi
         val txtFoodName = binding.txtFoodName
         val txtFoodDescription = binding.txtFoodDescription
         val foodPrice = binding.txtPrice
+        val btnAddCart = binding.btnAddCart
     }
 }
